@@ -6,7 +6,10 @@
 
     <title>Nofney — Roblox Developer</title>
 
-    <meta name="description" content="Nofney — Roblox developer, Rivals player and content creator.">
+    <meta
+        name="description"
+        content="Nofney — Roblox developer, Rivals player and content creator."
+    >
 
     <link rel="stylesheet" href="style.css">
 </head>
@@ -14,59 +17,69 @@
 <body>
 
     <!-- Background -->
-    <div class="background-glow"></div>
-    <div class="noise"></div>
+    <div class="grid-background"></div>
+    <div class="hero-glow"></div>
 
-    <!-- Navigation -->
-    <nav class="navbar">
 
-        <a href="#" class="logo">
+    <!-- NAVIGATION -->
+    <header class="navbar">
+
+        <a href="#" class="brand">
             NOFNEY
         </a>
 
-        <div class="nav-links">
+        <nav>
             <a href="#work">Work</a>
-            <a href="#about">About</a>
             <a href="#contact">Contact</a>
-        </div>
+        </nav>
 
-        <a href="#contact" class="nav-button">
-            Let's talk
-        </a>
-
-    </nav>
+    </header>
 
 
     <!-- HERO -->
-    <main class="hero">
+    <section class="hero">
 
-        <div class="hero-left">
+        <!-- LEFT -->
+        <div class="hero-content">
 
-            <div class="status">
+            <div class="status-pill">
                 <span class="status-dot"></span>
-                Available for projects
+                Roblox Developer
             </div>
 
-            <h1>
-                I create
-                <span>things.</span>
-            </h1>
+            <h1>Nofney</h1>
+
+            <h2>
+                Roblox Developer · Rivals Player
+            </h2>
 
             <p class="hero-description">
-                I'm Nofney — a Roblox developer, Rivals player
-                and content creator focused on making cool things
-                and pushing my skills further.
+                I create and play Roblox experiences, compete in
+                Rivals and make content around the games I enjoy.
+                I'm always working on something new.
             </p>
 
             <div class="hero-buttons">
 
-                <a href="#work" class="button primary">
-                    Explore my work
-                    <span>↗</span>
+                <a href="#contact" class="button primary">
+                    <span class="mail-icon">✉</span>
+                    Contact me
                 </a>
 
-                <a href="#contact" class="button secondary">
-                    Get in touch
+                <a href="#work" class="button secondary">
+                    View work
+                </a>
+
+            </div>
+
+            <div class="socials">
+
+                <a href="#" aria-label="Roblox">
+                    ◈
+                </a>
+
+                <a href="#" aria-label="GitHub">
+                    ◉
                 </a>
 
             </div>
@@ -74,168 +87,105 @@
         </div>
 
 
-        <!-- Avatar -->
-        <div class="avatar-container">
+        <!-- RIGHT -->
+        <div class="hero-right">
 
-            <div class="avatar-glow"></div>
+            <div class="profile-image">
 
-            <div class="avatar-ring">
-                <img src="avatar.webp" alt="Nofney Roblox avatar">
+                <img
+                    src="avatar.webp"
+                    alt="Nofney Roblox avatar"
+                >
+
             </div>
 
-            <div class="avatar-label">
-                <span>NOFNEY</span>
-                <small>ROBLOX</small>
+
+            <div class="playing-card">
+
+                <div class="playing-header">
+                    <span class="playing-dot"></span>
+                    PLAYING RIGHT NOW
+                </div>
+
+                <div class="game-row">
+                    <span>Rivals 🔫</span>
+                    <strong>—</strong>
+                </div>
+
+                <div class="game-row">
+                    <span>Roblox 🎮</span>
+                    <strong>—</strong>
+                </div>
+
+                <div class="game-row">
+                    <span>Other</span>
+                    <strong>—</strong>
+                </div>
+
             </div>
 
         </div>
 
-    </main>
+    </section>
 
 
     <!-- STATS -->
     <section class="stats">
 
         <div class="stat">
-            <span class="stat-number">01</span>
-            <span class="stat-label">Developer</span>
+            <strong>RIVALS</strong>
+            <span>Competitive player</span>
         </div>
 
         <div class="stat">
-            <span class="stat-number">02</span>
-            <span class="stat-label">Content Creator</span>
+            <strong>ROBLOX</strong>
+            <span>Developer</span>
         </div>
 
         <div class="stat">
-            <span class="stat-number">03</span>
-            <span class="stat-label">Rivals Player</span>
-        </div>
-
-        <div class="stat">
-            <span class="stat-number">∞</span>
-            <span class="stat-label">Ideas</span>
+            <strong>CONTENT</strong>
+            <span>Creator</span>
         </div>
 
     </section>
 
 
     <!-- WORK -->
-    <section id="work" class="section">
+    <section id="work" class="work-section">
 
-        <div class="section-top">
-
-            <div>
-                <p class="section-label">SELECTED WORK</p>
-                <h2>Things I've made.</h2>
-            </div>
-
-            <p class="section-description">
-                A collection of projects, games and content
-                I've worked on.
-            </p>
-
+        <div class="section-heading">
+            <span>SELECTED WORK</span>
+            <h2>What I do.</h2>
         </div>
 
+        <div class="work-grid">
 
-        <div class="projects">
-
-            <article class="project">
-
-                <div class="project-visual rivals">
-                    <span class="project-number">01</span>
-
-                    <div class="project-title">
-                        <small>ROBLOX</small>
-                        <h3>Rivals</h3>
-                    </div>
-                </div>
-
-                <div class="project-bottom">
-                    <div>
-                        <h4>Rivals</h4>
-                        <p>Competitive gameplay &amp; content</p>
-                    </div>
-
-                    <span class="arrow">↗</span>
-                </div>
-
+            <article class="work-card">
+                <div class="work-number">01</div>
+                <h3>Roblox Development</h3>
+                <p>
+                    Games, systems and projects built
+                    around the Roblox platform.
+                </p>
             </article>
 
-
-            <article class="project">
-
-                <div class="project-visual development">
-                    <span class="project-number">02</span>
-
-                    <div class="project-title">
-                        <small>ROBLOX</small>
-                        <h3>Development</h3>
-                    </div>
-                </div>
-
-                <div class="project-bottom">
-                    <div>
-                        <h4>Development</h4>
-                        <p>Games, systems &amp; experiments</p>
-                    </div>
-
-                    <span class="arrow">↗</span>
-                </div>
-
+            <article class="work-card">
+                <div class="work-number">02</div>
+                <h3>Rivals</h3>
+                <p>
+                    Competitive gameplay, clips and
+                    mechanical gameplay.
+                </p>
             </article>
 
-
-            <article class="project">
-
-                <div class="project-visual montages">
-                    <span class="project-number">03</span>
-
-                    <div class="project-title">
-                        <small>CONTENT</small>
-                        <h3>Montages</h3>
-                    </div>
-                </div>
-
-                <div class="project-bottom">
-                    <div>
-                        <h4>Montages</h4>
-                        <p>Editing, clips &amp; creative work</p>
-                    </div>
-
-                    <span class="arrow">↗</span>
-                </div>
-
+            <article class="work-card">
+                <div class="work-number">03</div>
+                <h3>Content</h3>
+                <p>
+                    Montages, videos and other creative
+                    projects.
+                </p>
             </article>
-
-        </div>
-
-    </section>
-
-
-    <!-- ABOUT -->
-    <section id="about" class="about section">
-
-        <div class="section-top">
-
-            <div>
-                <p class="section-label">ABOUT</p>
-                <h2>A bit about me.</h2>
-            </div>
-
-        </div>
-
-        <div class="about-content">
-
-            <p>
-                I'm Nofney. I spend a lot of my time around Roblox —
-                whether that's developing, playing competitively,
-                editing videos or experimenting with new ideas.
-            </p>
-
-            <p>
-                I'm always looking for something new to create,
-                improve or master.
-            </p>
 
         </div>
 
@@ -243,40 +193,33 @@
 
 
     <!-- CONTACT -->
-    <section id="contact" class="contact section">
+    <section id="contact" class="contact-section">
 
-        <p class="section-label">CONTACT</p>
+        <span>CONTACT</span>
 
         <h2>
-            Have something<br>
-            <span>in mind?</span>
+            Let's make<br>
+            something cool.
         </h2>
 
-        <a href="mailto:YOUR-EMAIL-HERE" class="contact-button">
-            Get in touch
-            <span>↗</span>
+        <a
+            href="mailto:YOUR-EMAIL-HERE"
+            class="contact-button"
+        >
+            Contact me ↗
         </a>
 
     </section>
 
 
-    <!-- FOOTER -->
     <footer>
+        <span>© 2026 Nofney</span>
 
         <div>
-            © 2026 Nofney
-        </div>
-
-        <div class="footer-links">
             <a href="#">Roblox</a>
             <a href="#">YouTube</a>
             <a href="#">Discord</a>
         </div>
-
-        <div>
-            Made by Nofney
-        </div>
-
     </footer>
 
 
