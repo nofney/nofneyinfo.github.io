@@ -1,79 +1,54 @@
-const API = "https://nofneyinfo-api.lukemilky143.workers.dev/";
-
-const leaderboard = document.getElementById("leaderboard");
+const API = "https://nofneyinfo-api.lukemilky143.workers.dev";
 
 const visits = document.getElementById("visits");
 const players = document.getElementById("players");
 const favorites = document.getElementById("favorites");
+const leaderboard = document.getElementById("leaderboard");
 
-function format(value) {
-  if (value >= 1_000_000_000)
-    return (value / 1_000_000_000).toFixed(2) + "B";
-
-  if (value >= 1_000_000)
-    return Math.round(value / 1_000_000) + "M";
-
-  if (value >= 1_000)
-    return Math.round(value / 1_000) + "K";
-
-  return Math.round(value).toString();
+function format(n){
+  if(n>=1e9) return (n/1e9).toFixed(2)+"B";
+  if(n>=1e6) return Math.round(n/1e6)+"M";
+  if(n>=1e3) return Math.round(n/1e3)+"K";
+  return Math.round(n).toString();
 }
 
-function animateNumber(element, endValue, duration = 900) {
-  const start = performance.now();
+function animate(el,target){
+  const start=performance.now();
+  const duration=850;
 
-  function frame(now) {
-    const progress = Math.min((now - start) / duration, 1);
-
-    // easeOutCubic
-    const eased = 1 - Math.pow(1 - progress, 3);
-
-    const current = endValue * eased;
-
-    element.textContent = format(current);
-
-    if (progress < 1) {
-      requestAnimationFrame(frame);
-    } else {
-      element.textContent = format(endValue);
-    }
+  function step(t){
+    const p=Math.min((t-start)/duration,1);
+    const e=1-Math.pow(1-p,3);
+    el.textContent=format(target*e);
+    if(p<1) requestAnimationFrame(step);
   }
 
-  requestAnimationFrame(frame);
+  requestAnimationFrame(step);
 }
 
-async function updateWebsite() {
-  const response = await fetch(API + "?t=" + Date.now());
-  const data = await response.json();
+async function load(){
+  const res=await fetch(API+"?t="+Date.now());
+  const data=await res.json();
 
-  animateNumber(visits, data.totals.visits);
-  animateNumber(players, data.totals.players);
-  animateNumber(favorites, data.totals.favorites);
+  animate(visits,data.totals.visits);
+  animate(players,data.totals.players);
+  animate(favorites,data.totals.favorites);
 
-  leaderboard.innerHTML = "";
+  leaderboard.innerHTML="";
 
-  data.leaderboard.forEach((game, index) => {
+  data.leaderboard.forEach((g,i)=>{
     leaderboard.innerHTML += `
-      <div class="leaderboard-row">
-        <div class="leaderboard-left">
-          <div class="rank">#${index + 1}</div>
-
-          <img class="game-icon"
-               src="${game.thumbnail}"
-               alt="${game.name}">
-
-          <span class="game-name">${game.name}</span>
+      <div class="row">
+        <div class="leftRow">
+          <div class="rank">#${i+1}</div>
+          <img src="${g.thumbnail}">
+          <div>${g.name}</div>
         </div>
-
-        <div class="player-count">
-          ${format(game.playing)}
-        </div>
+        <strong>${format(g.playing)}</strong>
       </div>
     `;
   });
 }
 
-updateWebsite();
-
-// Refresh Roblox data every minute
-setInterval(updateWebsite, 60000);
+load();
+setInterval(load,60000);
