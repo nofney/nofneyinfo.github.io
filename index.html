@@ -4,115 +4,111 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Nofney</title>
+
   <link rel="stylesheet" href="style.css">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 </head>
+
 <body>
 
-<div class="grid"></div>
-<div class="centerGlow"></div>
-<div class="avatarGlow"></div>
+  <div class="grid"></div>
+  <div class="centerGlow"></div>
+  <div class="avatarGlow"></div>
 
-<nav>
-  <div class="logo">NOFNEY</div>
-  <div class="links">
-    <a href="#work">Work</a>
-    <a href="#contact">Contact</a>
-  </div>
-</nav>
+  <nav>
+    <div class="logo">NOFNEY</div>
 
-<section class="hero">
+    <div class="links">
+      <a href="#work">Work</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </nav>
 
-  <div class="left">
+  <section class="hero">
 
-    <div class="pill">
-      <div class="dot"></div>
-      Roblox Developer
+    <div class="left">
+
+      <div class="pill">
+        <div class="dot"></div>
+        Roblox Developer
+      </div>
+
+      <h1>Nofney</h1>
+
+      <h2>Roblox Developer · Rivals Player</h2>
+
+      <p>
+        I create Roblox experiences, compete in Rivals,
+        and build projects I'm passionate about.
+      </p>
+
+      <div class="buttons">
+        <a class="primary" href="#contact">Contact me</a>
+        <a class="secondary" href="#work">View work</a>
+      </div>
+
     </div>
 
-    <h1>Nofney</h1>
+    <div class="right">
 
-    <h2>Roblox Developer · Rivals Player</h2>
+      <div class="avatar">
+        <img src="avatar.webp" alt="Nofney Avatar">
+      </div>
 
-    <p>
-      I create Roblox experiences, compete in Rivals,
-      and build projects I'm passionate about.
-    </p>
+      <div class="leaderboard">
 
-    <div class="buttons">
-      <a class="primary" href="#contact">Contact me</a>
-      <a class="secondary" href="#work">My work</a>
+        <div class="lbTitle">
+          PLAYING RIGHT NOW
+        </div>
+
+        <div id="leaderboard"></div>
+
+      </div>
+
     </div>
 
-  </div>
+  </section>
 
-  <div class="right">
+  <section class="stats">
 
-    <div class="avatar">
-      <img src="avatar.webp" alt="">
+    <div class="stat">
+      <h3 id="visits">0</h3>
+      <span>Play Sessions</span>
     </div>
 
-    <div class="leaderboard">
-      <div class="lbTitle">PLAYING RIGHT NOW</div>
-      <div id="leaderboard"></div>
+    <div class="stat">
+      <h3 id="players">0</h3>
+      <span>Players right now</span>
     </div>
 
-  </div>
-
-</section>
-
-<section class="stats">
-
-  <div class="stat">
-    <h3 id="visits">0</h3>
-    <span>Play Sessions</span>
-  </div>
-
-  <div class="stat">
-    <h3 id="players">0</h3>
-    <span>Players right now</span>
-  </div>
-
-  <div class="stat">
-    <h3 id="favorites">0</h3>
-    <span>Favorites</span>
-  </div>
-
-</section>
-
-<section id="work" class="work">
-  <small>SELECTED WORK</small>
-  <h2>What I do.</h2>
-
-  <div class="cards">
-
-    <div class="card">
-      <span>01</span>
-      <h3>Development</h3>
-      <p>Roblox games & scripting.</p>
+    <div class="stat">
+      <h3 id="favorites">0</h3>
+      <span>Favorites</span>
     </div>
 
-    <div class="card">
-      <span>02</span>
-      <h3>Rivals</h3>
-      <p>Competitive gameplay.</p>
-    </div>
+  </section>
 
-    <div class="card">
-      <span>03</span>
-      <h3>Content</h3>
-      <p>Montages & editing.</p>
-    </div>
+  <section id="work" class="work">
 
-  </div>
-</section>
+    <small>SELECTED WORK</small>
 
-<section id="contact" class="contact">
-  <small>CONTACT</small>
-  <h2>Let's build something cool.</h2>
-</section>
+    <h2>Projects I've worked on.</h2>
 
-<script src="script.js"></script>
+    <div class="projects" id="projects"></div>
+
+  </section>
+
+  <section id="contact" class="contact">
+
+    <small>CONTACT</small>
+
+    <h2>
+      Let's build something cool.
+    </h2>
+
+  </section>
+
+  <script src="script.js"></script>
 
 </body>
 </html>
