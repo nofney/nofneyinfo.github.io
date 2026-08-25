@@ -6,52 +6,76 @@ const favorites = document.getElementById("favorites");
 const leaderboard = document.getElementById("leaderboard");
 const projects = document.getElementById("projects");
 
+const gameLinks = {
+  4777817887: "https://www.roblox.com/games/13772394625",
+  3021395192: "https://www.roblox.com/games/994732206",
+  5654670037: "https://www.roblox.com/games/15178321936"
+};
+
 const roles = {
   4777817887: [
-    ["gold","Art Designer","Prince Blade"],
-    ["purple","Art Designer","Haunted Harvester"],
-    ["blue","Scripter & Designer","2023 Halloween Battlepass"]
+    ["gold","Art Designer • Prince Blade"],
+    ["purple","Art Designer • Haunted Harvester"],
+    ["blue","Scripter & Designer • 2023 Halloween Battlepass"]
   ],
 
   3021395192: [
-    ["gold","Moderator",""],
-    ["purple","Thumbnail Art Designer",""]
+    ["gold","Moderator"],
+    ["purple","Thumbnail Art Designer"]
   ],
 
   5654670037: [
-    ["gold","Moderator",""],
-    ["purple","Thumbnail Art Designer",""],
-    ["blue","First Person Animator",""]
+    ["gold","Moderator"],
+    ["purple","Thumbnail Art Designer"],
+    ["blue","First Person Animator"]
   ]
 };
 
 function format(value){
-  if(value>=1e9) return (value/1e9).toFixed(2)+"B";
-  if(value>=1e6) return Math.round(value/1e6)+"M";
-  if(value>=1e3) return Math.round(value/1e3)+"K";
-  return Math.round(value);
+
+  if(value >= 1000000000)
+    return (value / 1000000000).toFixed(2) + "B";
+
+  if(value >= 1000000)
+    return Math.round(value / 1000000) + "M";
+
+  if(value >= 1000)
+    return Math.round(value / 1000) + "K";
+
+  return Math.round(value).toString();
+
 }
 
-function animate(el,target){
+function animate(element,target){
+
   const start = performance.now();
-  const duration = 900;
+  const duration = 850;
 
   function frame(now){
-    const p = Math.min((now-start)/duration,1);
-    const eased = 1-Math.pow(1-p,3);
 
-    el.textContent = format(target*eased);
+    const progress = Math.min((now-start)/duration,1);
 
-    if(p<1) requestAnimationFrame(frame);
+    const eased = 1 - Math.pow(1-progress,3);
+
+    element.textContent = format(target*eased);
+
+    if(progress<1)
+      requestAnimationFrame(frame);
+
+    else
+      element.textContent = format(target);
+
   }
 
   requestAnimationFrame(frame);
+
 }
 
 async function load(){
 
-  const res = await fetch(API+"?"+Date.now());
-  const data = await res.json();
+  const response = await fetch(API+"?t="+Date.now());
+
+  const data = await response.json();
 
   animate(visits,data.totals.visits);
   animate(players,data.totals.players);
@@ -65,11 +89,15 @@ async function load(){
       <div class="row">
 
         <div class="leftRow">
-          <div class="rank">#${index+1}</div>
+
+          <div class="rank">
+            #${index+1}
+          </div>
 
           <img src="${game.thumbnail}" alt="">
 
           <div>${game.name}</div>
+
         </div>
 
         <div class="playerCount">
@@ -86,39 +114,80 @@ async function load(){
   data.leaderboard.forEach(game=>{
 
     const badgeHTML = (roles[game.id] || [])
+
       .map(role=>`
         <div class="badge ${role[0]}">
-          ${role[1]}${role[2] ? " • "+role[2] : ""}
+          ${role[1]}
         </div>
       `).join("");
 
     projects.innerHTML += `
 
-      <div class="project">
+      <a class="project"
+         href="${gameLinks[game.id]}"
+         target="_blank">
 
-        <img src="${game.thumbnail}" alt="">
+        <div class="thumb">
+
+          <img src="${game.thumbnail}" alt="">
+
+          <div class="roleOverlay">
+            ${badgeHTML}
+          </div>
+
+        </div>
 
         <div class="projectBody">
 
           <h3>${game.name}</h3>
 
-          <div class="badges">
-            ${badgeHTML}
-          </div>
-
           <div class="metrics">
 
-            <div>👥 ${format(game.playing)} Playing</div>
+            <div class="metric">
 
-            <div>🎮 ${format(game.visits)} Visits</div>
+              <div class="metricLabel">
+                VISITS
+              </div>
 
-            <div>⭐ ${format(game.favorites)} Favorites</div>
+              <div class="metricValue">
+                ${format(game.visits)}
+              </div>
+
+            </div>
+
+            <div class="metric">
+
+              <div class="metricLabel">
+                PLAYING NOW
+              </div>
+
+              <div class="metricValue">
+
+                <span class="metricDot"></span>
+
+                ${format(game.playing)}
+
+              </div>
+
+            </div>
+
+            <div class="metric">
+
+              <div class="metricLabel">
+                FAVORITES
+              </div>
+
+              <div class="metricValue">
+                ${format(game.favorites)}
+              </div>
+
+            </div>
 
           </div>
 
         </div>
 
-      </div>
+      </a>
 
     `;
 
