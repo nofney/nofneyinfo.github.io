@@ -276,19 +276,41 @@ h1{
   border-right:1px solid var(--border);
 }
 
-.stat:last-child{border:none}
+.stat:last-child{
+  border:none;
+}
 
 .stat h3{
+  display:flex;
+  justify-content:center;
+  align-items:flex-start;
+  gap:2px;
+
   font-size:46px;
+  font-weight:800;
   letter-spacing:-2px;
+  line-height:1;
+}
+
+.stat h3 #visits,
+.stat h3 #players,
+.stat h3 #favorites{
+  font-size:inherit;
+  color:white;
 }
 
 .plus{
-  color:var(--yellow);
-  margin-left:2px;
+  color:#ffb52b;
+  font-size:28px;
+  font-weight:700;
+  line-height:1;
+  transform:translateY(3px);
 }
 
-.stat span{
+.stat > span{
+  display:block;
+  margin-top:8px;
+
   color:#d2d8e0;
   font-size:12px;
 }
