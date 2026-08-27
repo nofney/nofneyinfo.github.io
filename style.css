@@ -10,14 +10,12 @@
 
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
-
 body{
   font-family:'Inter',sans-serif;
   background:var(--bg);
   color:var(--text);
   overflow-x:hidden;
 }
-
 a{text-decoration:none;color:inherit}
 
 /* BACKGROUND */
@@ -27,8 +25,8 @@ a{text-decoration:none;color:inherit}
   inset:0;
   z-index:-10;
   background-image:
-    linear-gradient(rgba(255,255,255,.03) 1px,transparent 1px),
-    linear-gradient(90deg,rgba(255,255,255,.03) 1px,transparent 1px);
+  linear-gradient(rgba(255,255,255,.03) 1px,transparent 1px),
+  linear-gradient(90deg,rgba(255,255,255,.03) 1px,transparent 1px);
   background-size:64px 64px;
 }
 
@@ -37,25 +35,33 @@ a{text-decoration:none;color:inherit}
   left:50%;
   top:-40px;
   transform:translateX(-50%);
-  width:720px;
-  height:340px;
+  width:760px;
+  height:360px;
   border-radius:50%;
-  background:radial-gradient(circle,rgba(180,110,35,.22),transparent 70%);
-  filter:blur(65px);
+  background:radial-gradient(circle,rgba(180,110,35,.23),transparent 70%);
+  filter:blur(70px);
   z-index:-9;
 }
 
-/* Glow BEHIND avatar */
+/* ACTUALLY BEHIND THE AVATAR */
 
 .avatarGlow{
   position:absolute;
-  right:74px;
-  top:118px;
-  width:310px;
-  height:310px;
+  width:250px;
+  height:250px;
+
+  right:35px;
+  top:150px;
+
   border-radius:50%;
-  background:radial-gradient(circle,rgba(255,195,80,.32),transparent 70%);
-  filter:blur(48px);
+
+  background:radial-gradient(circle,
+    rgba(255,195,80,.38) 0%,
+    rgba(255,185,70,.20) 38%,
+    transparent 72%);
+
+  filter:blur(35px);
+
   z-index:-8;
 }
 
@@ -148,7 +154,9 @@ h1{
   transition:.2s;
 }
 
-.buttons a:hover{transform:translateY(-2px)}
+.buttons a:hover{
+  transform:translateY(-2px);
+}
 
 .primary{
   background:var(--yellow);
@@ -175,6 +183,7 @@ h1{
   overflow:hidden;
   border:1px solid #343b46;
   position:relative;
+  z-index:2;
 }
 
 .avatar img{
@@ -202,8 +211,6 @@ h1{
   margin-bottom:10px;
 }
 
-/* Animated green dot */
-
 .liveDot{
   width:8px;
   height:8px;
@@ -214,17 +221,9 @@ h1{
 }
 
 @keyframes pulse{
-  0%{
-    transform:scale(1);
-    box-shadow:0 0 8px rgba(53,226,122,.8);
-  }
   50%{
     transform:scale(1.25);
-    box-shadow:0 0 18px rgba(53,226,122,.4);
-  }
-  100%{
-    transform:scale(1);
-    box-shadow:0 0 8px rgba(53,226,122,.8);
+    box-shadow:0 0 18px rgba(53,226,122,.45);
   }
 }
 
@@ -236,7 +235,9 @@ h1{
   border-top:1px solid rgba(255,255,255,.05);
 }
 
-.row:first-child{border:none}
+.row:first-child{
+  border:none;
+}
 
 .leftRow{
   display:flex;
@@ -292,25 +293,16 @@ h1{
   line-height:1;
 }
 
-.stat h3 #visits,
-.stat h3 #players,
-.stat h3 #favorites{
-  font-size:inherit;
-  color:white;
-}
-
 .plus{
-  color:#ffb52b;
+  color:var(--yellow);
   font-size:28px;
   font-weight:700;
-  line-height:1;
-  transform:translateY(3px);
+  transform:translateY(2px);
 }
 
-.stat > span{
+.stat>span{
   display:block;
   margin-top:8px;
-
   color:#d2d8e0;
   font-size:12px;
 }
@@ -350,14 +342,14 @@ h1{
 
 .project:hover{
   transform:translateY(-5px);
-  border-color:#3d4550;
+  border-color:#404854;
 }
 
-/* Clickable thumbnail */
+/* MUCH LARGER THUMBNAILS */
 
 .thumb{
   position:relative;
-  height:175px;
+  height:215px;
   overflow:hidden;
 }
 
@@ -367,24 +359,26 @@ h1{
   object-fit:cover;
 }
 
-/* Roles ON TOP of image */
+/* SMALLER BADGES */
 
 .roleOverlay{
   position:absolute;
-  left:12px;
-  right:12px;
-  bottom:12px;
+  left:10px;
+  right:10px;
+  bottom:10px;
+
   display:flex;
   flex-wrap:wrap;
-  gap:6px;
+  gap:5px;
 }
 
 .badge{
-  padding:5px 9px;
+  padding:4px 7px;
   border-radius:999px;
-  font-size:10px;
+  font-size:9px;
   font-weight:700;
-  backdrop-filter:blur(8px);
+  backdrop-filter:blur(10px);
+  white-space:nowrap;
 }
 
 .gold{
@@ -413,8 +407,6 @@ h1{
   margin-bottom:14px;
 }
 
-/* Awokein-style metrics */
-
 .metrics{
   display:grid;
   grid-template-columns:repeat(3,1fr);
@@ -442,7 +434,7 @@ h1{
   font-weight:700;
   display:flex;
   align-items:center;
-  gap:6px;
+  gap:5px;
 }
 
 .metricDot{
@@ -452,8 +444,6 @@ h1{
   background:var(--green);
   box-shadow:0 0 8px var(--green);
 }
-
-/* CONTACT */
 
 .contact{
   max-width:1120px;
@@ -484,19 +474,23 @@ h1{
   .hero{
     grid-template-columns:1fr;
     padding:70px 24px;
-    gap:48px;
   }
 
   .right{align-items:center}
   .avatar{align-self:center}
 
   .stats{grid-template-columns:1fr}
-  .stat{border-right:none;border-bottom:1px solid var(--border)}
+
+  .stat{
+    border-right:none;
+    border-bottom:1px solid var(--border);
+  }
 
   .projects{grid-template-columns:1fr}
 
-  .work,.contact{padding:70px 24px}
+  .work,.contact{
+    padding:70px 24px;
+  }
 
   h1{font-size:60px}
-  .contact h2{font-size:48px}
 }
