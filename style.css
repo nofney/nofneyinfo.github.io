@@ -521,3 +521,20 @@ h1{
   align-items:center;
   gap:8px;
 }
+
+.roblox{
+  background:#171b22;
+  border:1px solid #39404b;
+  color:white;
+
+  display:flex;
+  align-items:center;
+  gap:8px;
+}
+
+.primary,
+.roblox{
+  display:flex;
+  align-items:center;
+  gap:8px;
+}
