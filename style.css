@@ -509,5 +509,15 @@ h1{
     padding:70px 24px;
   }
 
+  
   h1{font-size:60px}
+}
+
+.roblox{
+  background:#171b22;
+  border:1px solid #39404b;
+  color:white;
+  display:flex;
+  align-items:center;
+  gap:8px;
 }
