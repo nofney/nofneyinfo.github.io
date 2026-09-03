@@ -1,9 +1,9 @@
 const API = "https://nofneyinfo-api.lukemilky143.workers.dev";
 
 const gameLinks = {
-  4777817887: "https://www.roblox.com/games/13772394625",
-  3021395192: "https://www.roblox.com/games/994732206",
-  5654670037: "https://www.roblox.com/games/15178321936"
+  4777817887: "https://www.roblox.com/games/13772394625/Blade-Ball",
+  3021395192: "https://www.roblox.com/games/7796842481/RIOTFALL",
+  5654670037: "https://www.roblox.com/games/15178321936/BODYCAM"
 };
 
 const roles = {
@@ -75,7 +75,7 @@ document.addEventListener("DOMContentLoaded", async ()=>{
             <img src="${game.thumbnail}">
             <div>${game.name}</div>
           </div>
-          <div class="playerCount">${format(game.playing)}</div>
+          <div class="playerCount">${game.playing.toLocaleString("en-US")}</div>
         </div>
       `;
 
